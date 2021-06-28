@@ -1,0 +1,21 @@
+{
+  "name": "QAExampleSite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ice-cream-app.js",
+  "scripts": {
+    "start": "parcel ice-cream-app.html",
+    "build": "parcel build ice-cream-app.html",
+    "test": "jest --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "parcel": "^2.0.0-beta.2"
+  }
+}
