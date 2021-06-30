@@ -15,28 +15,33 @@ let iceCreamArray = [];
 submitEle.addEventListener('click', () => {
     console.log(availableIceCream);
     let newIceCream = new IceCream(flavorEle.value, typeEle.value, toppingsEle.value, "IceCream" + idCounter);
-    let iceCreamDiv = makeIceCreamDiv(newIceCream);
-    availableIceCream.innerHTML += iceCreamDiv;
-    let newIceCreamDiv = availableIceCream.querySelector("#" + newIceCream.id);
-    let purchaseButton = document.createElement('button');
-    purchaseButton.innerText = "Purchase";
-    newIceCreamDiv.appendChild(purchaseButton);
-    let iceCreamInfoPara = newIceCreamDiv.querySelector('p');
-    idCounter++;
-    iceCreamArray.push(newIceCream);
-    iceCreamParaArray.push(iceCreamInfoPara);
-    buttonArray.push(purchaseButton);
-    for (let i = 0; i < buttonArray.length; i++) {
-        buttonArray[i].addEventListener('click', () => {
-            console.log(buttonArray);
-            console.log(iceCreamParaArray);
-            console.log(iceCreamArray);
 
-            iceCreamArray[i].purchase();
-            iceCreamParaArray[i].innerHTML = `
-            <p class="iceCreamInfo">This is ${iceCreamArray[i].type} and has ${iceCreamArray[i].toppings} on it and has been purchased ${iceCreamArray[i].timesPurchased}</p>
-            `;
-        })
-    }
+    let purchaseButton = document.createElement('button');
+    let iceCreamDiv = document.createElement('div'),
+        iceCreamHeader = document.createElement('h1'),
+        iceCreamPara = document.createElement('p');
+
+    iceCreamHeader.innerText = newIceCream.flavor;
+    iceCreamDiv.appendChild(iceCreamHeader);
+
+    iceCreamPara.classList += 'iceCreamInfo';
+    iceCreamPara.innerText = 'This is ' + newIceCream.Type + ' and has ' +
+        newIceCream.toppings + ' on it and has been purchased' + newIceCream.timesPurchased;
+    iceCreamDiv.appendChild(iceCreamPara);
+
+    purchaseButton.innerText = "Purchase";
+    iceCreamDiv.appendChild(purchaseButton);
+    idCounter++;
+
+    availableIceCream.appendChild(iceCreamDiv);
+
+    purchaseButton.addEventListener('click', () => {
+
+
+        newIceCream.purchase();
+        iceCreamPara.innerText = 'This is ' + newIceCream.type + ' and has ' +
+            newIceCream.toppings + ' on it and has been purchased' + newIceCream.timesPurchased;
+
+    })
 
 })
